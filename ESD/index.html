@@ -1,0 +1,60 @@
+<script>
+    function getDataById(id) {
+        fetch(`http://localhost:8080/user/${id}`)
+        .then((response) => response.json())
+        .then((data) => { console.table(data); })
+    }
+    
+    function getData() {
+        fetch("http://localhost:8080/user")
+        .then((response) => response.json())
+        .then((data) => { console.table(data); })
+    }
+    
+    function postData(data) {
+        fetch("http://localhost:8080/user", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .then((data) => { console.table(data); })
+    }
+        
+    
+    function putData(data) {
+        fetch("http://localhost:8080/user", {
+            method: "PUT",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .then((data) => { console.table(data); })
+    }
+    
+    function deleteData(id) {
+        fetch("http://localhost:8080/user", {
+            method: "DELETE",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"_id": id})
+        })
+        .then((response) => response.json())
+        .then((data) => { console.table(data); })
+    }
+    
+    
+    getDataById();
+    getData();
+    postData({"name": "Akshu", "age": 20, "city": "Koradi"});
+    putData({"_id" : "61082ae9cd4b7a0ccc39d377", "name": "chaitu"});
+    deleteData("61082b4ecd4b7a0ccc39d37a");
+    </script>
